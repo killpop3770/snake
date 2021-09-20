@@ -3,9 +3,11 @@ extern crate graphics;
 extern crate opengl_graphics;
 extern crate piston;
 
-use glutin_window::{GlutinWindow as Window, GlutinWindow};
+use glutin_window::{GlutinWindow as Window};
 use opengl_graphics::{GlGraphics, OpenGL};
 use piston::event_loop::{EventSettings, Events};
+#[allow(non_snake_case)]
+#[allow(unused_imports)]
 use piston::input::{RenderArgs, RenderEvent, UpdateArgs, UpdateEvent};
 use piston::window::WindowSettings;
 use graphics::clear;
@@ -30,7 +32,6 @@ struct App {
 
 impl App {
     fn render(&mut self, args: &RenderArgs) {
-        use graphics;
 
         let green: [f32; 4] = [0.0, 1.0, 0.0, 0.5];
 
@@ -70,7 +71,6 @@ struct Snake {
 
 impl Snake {
     fn render(&self, gl: &mut GlGraphics, args: &RenderArgs) {
-        use graphics;
 
         let red: [f32; 4] = [1.0, 0.0, 0.0, 1.0];
 
@@ -112,7 +112,7 @@ impl Snake {
 fn main() {
     let opengl = OpenGL::V4_5;
 
-    let mut window: GlutinWindow = WindowSettings::new(
+    let mut window: Window = WindowSettings::new(
         "Snaky",
         [400, 400])
         .graphics_api(opengl)
